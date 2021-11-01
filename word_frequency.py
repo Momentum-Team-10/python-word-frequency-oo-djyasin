@@ -60,6 +60,8 @@ class WordList:
         # could be a dictionary or another type of object.
         # """
         self.text = sorted(self.text, key=self.text.count, reverse=True)
+        #tryinng to use this to convert the list from above to a dictionary, but I don't think it's working. 
+        
         def Convert(self, text):
             dictionary = {text[i]: text[i + 1] for i in range(0, len(text), 2)}
         return Convert      

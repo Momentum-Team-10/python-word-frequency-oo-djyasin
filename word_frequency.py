@@ -59,10 +59,14 @@ class WordList:
         # extract_words and remove_stop_words. The data structure
         # could be a dictionary or another type of object.
         # """
-        self.text = sorted(self.text, key=self.text.count, reverse=True)        
+        self.text = sorted(self.text, key=self.text.count, reverse=True)
+        def Convert(self, text):
+            dictionary = {text[i]: text[i + 1] for i in range(0, len(text), 2)}
+        return Convert      
 
-        print(self.text)
-        
+        print(Convert)
+
+   
     #    raise NotImplementedError("WordList.get_freqs")
 
 
@@ -73,11 +77,11 @@ class FreqPrinter:
     def print_freqs(self):
         final = {}
 
-        for word in WordList:
-            final[word] = self.freqs.count(word)         
+        for words in WordList:
+            final[words] = self.text.count(words)         
     
 
-            #  raise NotImplementedError("FreqPrinter.print_freqs")
+#             #  raise NotImplementedError("FreqPrinter.print_freqs")
 
 
 if __name__ == "__main__":

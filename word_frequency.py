@@ -1,3 +1,6 @@
+from typing import Text
+
+
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has',
     'he', 'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to',
@@ -35,51 +38,46 @@ class WordList:
                 self.text = self.text.replace("\n", "")
                 self.text = self.text.lower()
                 self.text = self.text.split(" ")
-                print(self.text)
+#               print(self.text)
         # raise NotImplementedError("WordList.extract_words")
 
     def remove_stop_words(self):
-        """
-        Removes all stop words from our word list. Expected to
-        be run after extract_words.
-        """
+        # """
+        # Removes all stop words from our word list. Expected to
+        # be run after extract_words.
+        # """
         for word in self.text:
             if word in STOP_WORDS:
                 self.text.remove(word)
+                print(self.text)
 #         raise NotImplementedError("WordList.remove_stop_words")
 
-#     def get_freqs(self):
-#         """
-#         Returns a data structure of word frequencies that
-#         FreqPrinter can handle. Expected to be run after
-#         extract_words and remove_stop_words. The data structure
-#         could be a dictionary or another type of object.
-#         """
-#         raise NotImplementedError("WordList.get_freqs")
+    def get_freqs(self):
+        # """
+        # Returns a data structure of word frequencies that
+        # FreqPrinter can handle. Expected to be run after
+        # extract_words and remove_stop_words. The data structure
+        # could be a dictionary or another type of object.
+        # """
+        self.text = sorted(self.text, key=self.text.count, reverse=True)        
+
+        print(self.text)
+        
+    #    raise NotImplementedError("WordList.get_freqs")
 
 
-# class FreqPrinter:
-#     def __init__(self, freqs):
-#         pass
+class FreqPrinter:
+    def __init__(self, freqs):
+        self.freqs = freqs
 
-#     def print_freqs(self):
-#         """
-#         Prints out a frequency chart of the top 10 items
-#         in our frequencies data structure.
+    def print_freqs(self, freqs):
+        final = {}
 
-#         Example:
-#           her | 33   *********************************
-#         which | 12   ************
-#           all | 12   ************
-#          they | 7    *******
-#         their | 7    *******
-#           she | 7    *******
-#          them | 6    ******
-#          such | 6    ******
-#        rights | 6    ******
-#         right | 6    ******
-#         """
-#         raise NotImplementedError("FreqPrinter.print_freqs")
+        for word in self:
+            final[word] = self.freqs.count(word)         
+        print(final)
+
+            #  raise NotImplementedError("FreqPrinter.print_freqs")
 
 
 if __name__ == "__main__":

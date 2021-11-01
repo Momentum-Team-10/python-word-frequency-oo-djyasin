@@ -70,12 +70,12 @@ class FreqPrinter:
     def __init__(self, freqs):
         self.freqs = freqs
 
-    def print_freqs(self, freqs):
+    def print_freqs(self):
         final = {}
 
-        for word in self:
+        for word in WordList:
             final[word] = self.freqs.count(word)         
-        print(final)
+    
 
             #  raise NotImplementedError("FreqPrinter.print_freqs")
 
